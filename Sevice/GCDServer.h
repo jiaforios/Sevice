@@ -16,7 +16,9 @@
 
 - (void)messages:(void(^)(NSString *))blocks;
 
-@property(nonatomic,copy)void(^msgBlock)(NSString *msg);
+- (void)connectStatus:(void(^)(NSInteger,NSString *))blocke;
 
+@property(nonatomic,copy)void(^msgBlock)(NSString *msg);
+@property(nonatomic,copy)void(^connectBlock)(NSInteger status,NSString *str);
 
 @end

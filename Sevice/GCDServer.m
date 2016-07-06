@@ -35,11 +35,17 @@
     _msgBlock = blocks;
 }
 
+
+- (void)connectStatus:(void (^)(NSInteger, NSString *))blocke
+{
+    _connectBlock = blocke;
+    
+}
 - (id)init
 {
     if (self = [super init]) {
         
-        _socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
+        _socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
         
     }
     
@@ -62,8 +68,14 @@
     if ([_socket acceptOnPort:port error:&error]) {
         
         NSLog(@"监听端口成功");
+//            _connectBlock(MonitorSuccess,nil);
+
+        
+        
     }else
     {
+//                _connectBlock(MonitorFail,nil);
+        
         NSLog(@"监听端口失败 %@",[error localizedDescription]);
     }
     
@@ -76,6 +88,8 @@
 {
     NSLog(@"请求连接的设备的地址:%@",newSocket.connectedHost);
     //发送数据给 客户端
+    
+    _connectBlock(Gethost,newSocket.connectedHost);
     
     [newSocket writeData:[@"hello" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1 tag:0];
     
@@ -99,8 +113,10 @@
     NSString *striData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"收到的数据:%@",striData);
     _msgBlock(striData);
-    [sock readDataWithTimeout:-1 tag:0]; // 继续接收数据
     
+    _connectBlock(Getdata,striData);
+
+    [sock readDataWithTimeout:-1 tag:0]; // 继续接收数据
     
 }
 

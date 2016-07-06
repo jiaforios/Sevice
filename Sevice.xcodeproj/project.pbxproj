@@ -38,6 +38,8 @@
 		751976F61D2A4DEC007A8E36 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		751976FA1D2A4E71007A8E36 /* GCDServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDServer.h; sourceTree = "<group>"; };
 		751976FB1D2A4E71007A8E36 /* GCDServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDServer.m; sourceTree = "<group>"; };
+		7546E2B61D2BA7ED003C3187 /* Sevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sevice.h; sourceTree = "<group>"; };
+		7546E2B71D2BA814003C3187 /* Sevice.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sevice.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				751976DA1D2A4DDA007A8E36 /* main.m */,
+				7546E2B61D2BA7ED003C3187 /* Sevice.h */,
+				7546E2B71D2BA814003C3187 /* Sevice.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -295,6 +299,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Sevice/Sevice.pch";
 				INFOPLIST_FILE = Sevice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zengjia.Sevice;
@@ -306,6 +312,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Sevice/Sevice.pch";
 				INFOPLIST_FILE = Sevice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zengjia.Sevice;
@@ -332,6 +340,7 @@
 				751976EF1D2A4DDA007A8E36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

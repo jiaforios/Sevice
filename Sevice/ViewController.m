@@ -29,9 +29,16 @@ extern NSString *msg;
      hostLabel.text = [@"本地IP 地址:" stringByAppendingString:[self getIPAddress]];
     [self.view addSubview:hostLabel];
 
-    label = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
-    label.backgroundColor = [UIColor blueColor];
     
+    UILabel *lableAlert = [[UILabel alloc] initWithFrame:CGRectMake(30, 150, 300, 40)];
+    lableAlert.backgroundColor = [UIColor lightGrayColor];
+    lableAlert.textColor = [UIColor whiteColor];
+    
+    [self.view addSubview:lableAlert];
+    
+    label = [[UILabel alloc] initWithFrame:CGRectMake(30, 200, 200, 40)];
+    label.backgroundColor = [UIColor lightGrayColor];
+    label.textColor = [UIColor whiteColor];
     [self.view addSubview:label];
     
     
@@ -44,8 +51,30 @@ extern NSString *msg;
         
     }];
     
+    [[GCDServer shareGCDServerManger] connectStatus:^(NSInteger sta, NSString *str) {
+        if (sta == 0) {
+            
+            lableAlert.text = @"监听端口成功";
+        }
+        if (sta == 1) {
+            
+            lableAlert.text = [@"请求连接的IP:" stringByAppendingString:str];
+            
+        }
+        
+        if (sta == 2) {
+            
+            lableAlert.text = [@"接收信息成功:" stringByAppendingString:str];
+        }
+       
+        if(sta == 3)
+        {
+            lableAlert.text = @"监听端口失败";
+
+        }
+        
+    }];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(msgchange:) name:@"message" object:nil];
     
     
 }

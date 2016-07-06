@@ -16,19 +16,6 @@ int main(int argc, char * argv[]) {
         
         [[GCDServer shareGCDServerManger] acceptClient];
         
-//        s.msgBlock = ^(NSString *str){
-//        
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                
-//                [[NSNotificationCenter defaultCenter] postNotificationName:@"message" object:nil userInfo:@{@"msg":str}];  
-//            });
-
-            
-        
-//        };
-        
-//            [s acceptClient];
-
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
